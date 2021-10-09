@@ -2,10 +2,14 @@
   "name": "auth",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "yarn": "1.x"
+  },
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
-    "test": "jest --watchAll -no-cache"
+    "test": "jest --watchAll -no-cache",
+    "heroku-postbuild": "cd client && yarn build"
   },
   "jest": {
     "preset": "ts-jest",

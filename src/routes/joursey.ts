@@ -18,8 +18,9 @@ router.post(
       .isLength({ min: 3 })
       .withMessage("jourseyName must be 3 character long"),
     body("jourseyNumber")
-      .isNumeric()
-      .withMessage("Joursey Number must be a number"),
+      .trim()
+      .isLength({ min: 1, max: 3 })
+      .withMessage("Joursey Number must 1 to 3 digit"),
     body("paymentMethod")
       .isString()
       .isLength({ min: 1 })

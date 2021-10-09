@@ -5,7 +5,7 @@ import mongoose, { Mongoose } from "mongoose";
 
 interface JourseyAttrs {
   user: string;
-  jourseyNumber: number;
+  jourseyNumber: string;
   jourseyName: string;
   paymentMethod: String;
   txId: String;
@@ -26,7 +26,7 @@ interface JourseyModel extends mongoose.Model<JourseyDoc> {
 
 interface JourseyDoc extends mongoose.Document {
   user: string;
-  jourseyNumber: number;
+  jourseyNumber: string;
   jourseyName: string;
   paymentMethod: string;
   txId: string;
@@ -45,7 +45,7 @@ const jourseySchema = new mongoose.Schema(
       unique: true,
     },
     jourseyNumber: {
-      type: Number,
+      type: String,
       required: true,
     },
     jourseyName: {

@@ -56,7 +56,7 @@ const JourseyForm = () => {
     <form className="form-container bg-white rounded-xl mt-28 px-4 py-8 flex flex-col gap-4 shadow-lg">
       <div>
         <input
-          type="Number"
+          type="text"
           placeholder="Desired jersey number"
           className="px-3 py-2 rounded-xl bg-gray-100 w-full border border-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 "
           value={jourseyNumber}

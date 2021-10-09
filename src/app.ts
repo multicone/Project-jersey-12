@@ -6,6 +6,7 @@ import swaggerUI from "swagger-ui-express";
 import dotenv from "dotenv";
 import docs from "./docs/index.js";
 import cors from "cors";
+import path from "path";
 // import hostValidation from "host-validation";
 
 dotenv.config();
@@ -39,6 +40,14 @@ app.use(newPasswordRouter);
 app.use(jourseyRouter);
 
 app.use("/api", swaggerUI.serve, swaggerUI.setup(docs));
+
+const buildPath = path.join(__dirname, "../client/build");
+
+app.use(express.static(buildPath));
+
+app.get("*", async (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
 
 app.all("*", async (req, res, next) => {
   throw new NotFoundError();
