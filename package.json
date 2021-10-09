@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
     "test": "jest --watchAll -no-cache",
-    "heroku-postbuild": "cd client && yarn build"
+    "heroku-postbuild": "cd client && yarn start && yarn build"
   },
   "jest": {
     "preset": "ts-jest",
