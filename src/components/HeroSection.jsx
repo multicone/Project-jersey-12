@@ -7,7 +7,10 @@ const HeroSection = () => {
     <div className='w-full py-16'>
       <div className='container-custom mx-auto px-4 flex'>
         <div className='mt-12'>
-          <h1 className='text-6xl font-bold' style={{ lineHeight: 1.1 }}>
+          <h1
+            className='text-6xl font-bold text-gray-900'
+            style={{ lineHeight: 1.1 }}
+          >
             Jersey design is now revealed!
           </h1>
           <div className='flex gap-4 items-center mt-12'>
