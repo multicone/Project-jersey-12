@@ -7,3 +7,50 @@
   height: auto;
   max-width: 700px;
 }
+.btn-secondary {
+  transition: background 0.2s ease-in-out;
+}
+.btn-secondary:hover {
+  background-color: rgb(24, 24, 24);
+  color: white;
+  border: 1px solid black;
+}
+
+.card {
+  min-width: 300px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.card__image {
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.card__image-1 {
+  background-image: url('../image/shafiq-02.jpg');
+}
+.card__image-2 {
+  background-image: url('../image/sourav-01.jpg');
+}
+.card__image-3 {
+  background-image: url('../image/kibria-01.jpg');
+}
+.card__image-4 {
+  background-image: url('../image/shanto-01.jpg');
+}
+.card__image-5 {
+  background-image: url('../image/labu-01.jpg');
+}
+.card__image-6 {
+  background-image: url('../image/rishad-01.jpeg');
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: 600;
+}

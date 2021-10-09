@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import Navbar from './components/Navbar'
 import Home from './screens/Home'
-import Preview from './screens/Preview'
+import Dashboard from './screens/Dashboard'
 import SignIn from './screens/SignIn'
 import CreateAccount from './screens/CreateAccount'
 import Footer from './components/Footer'
+import Contact from './screens/Contact'
 
 const App = () => {
   return (
@@ -15,7 +16,9 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path='/' component={Home} exact />
-          <Route path='/preview' component={Preview} exact />
+          <Route path='/dashboard' component={Dashboard} exact />
+          <Route path='/contact' component={Contact} exact />
+
           <Route path='/sign-in' component={SignIn} exact />
           <Route path='/create-account' component={CreateAccount} exact />
         </Switch>
