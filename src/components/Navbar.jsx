@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../contexts/userContext'
 
 const Navbar = () => {
+  const { logout, user } = useContext(UserContext)
   return (
     <div>
       <div className='w-full bg-gray-800 py-4'>
@@ -13,12 +15,21 @@ const Navbar = () => {
           </div>
 
           <div>
-            <Link
-              to='/sign-in'
-              className='bg-indigo-500 px-4 py-2 text-white rounded-xl hover:bg-indigo-600'
-            >
-              Sign in
-            </Link>
+            {!user ? (
+              <Link
+                to='/sign-in'
+                className='bg-indigo-500 px-4 py-2 text-white rounded-xl hover:bg-indigo-600'
+              >
+                Sign in
+              </Link>
+            ) : (
+              <button
+                onClick={logout}
+                className='bg-indigo-500 px-4 py-2 text-white rounded-xl hover:bg-indigo-600'
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </div>

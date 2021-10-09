@@ -8,22 +8,27 @@ import SignIn from './screens/SignIn'
 import CreateAccount from './screens/CreateAccount'
 import Footer from './components/Footer'
 import Contact from './screens/Contact'
+import UserContextProvider from './contexts/userContext'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' component={Home} exact />
-          <Route path='/dashboard' component={Dashboard} exact />
-          <Route path='/contact' component={Contact} exact />
+      <Toaster />
+      <UserContextProvider>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path='/' component={Home} exact />
+            <Route path='/dashboard' component={Dashboard} exact />
+            <Route path='/contact' component={Contact} exact />
 
-          <Route path='/sign-in' component={SignIn} exact />
-          <Route path='/create-account' component={CreateAccount} exact />
-        </Switch>
-        <Footer />
-      </Router>
+            <Route path='/sign-in' component={SignIn} exact />
+            <Route path='/create-account' component={CreateAccount} exact />
+          </Switch>
+          <Footer />
+        </Router>
+      </UserContextProvider>
     </div>
   )
 }

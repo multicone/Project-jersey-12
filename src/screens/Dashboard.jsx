@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../contexts/userContext'
 
-const Dashboard = () => {
+const Dashboard = ({ history }) => {
+  const { user } = useContext(UserContext)
+
+  useEffect(() => {
+    if (!user) {
+      history.push('/sign-in')
+    }
+  }, [user])
   return (
     <div className='w-full py-8 bg-gray-100'>
       <div className='container-custom mx-auto px-4 flex flex-col items-center'>
