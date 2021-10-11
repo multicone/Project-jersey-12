@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-import { AuthorizationError } from '../errors/authorization-error';
+import { Request, Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
+import { AuthorizationError } from "../errors/authorization-error";
 
 interface UserPayload {
+  name: string;
   id: string;
   email: string;
 }
@@ -22,12 +23,12 @@ export const currentUser = (
 ) => {
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
+    req.headers.authorization.startsWith("Bearer")
   ) {
     let token;
 
     try {
-      token = req.headers.authorization.split(' ')[1];
+      token = req.headers.authorization.split(" ")[1];
       const payload = jwt.verify(token, process.env.JWT_KEY!) as UserPayload;
       req.user = payload;
       next();

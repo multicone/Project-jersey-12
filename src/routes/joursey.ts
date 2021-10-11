@@ -5,6 +5,7 @@ import { Joursey } from "../models/joursey";
 import { BadRequestError } from "../errors/bad-request-error";
 import { body } from "express-validator";
 import { validateRequest } from "../middlewares/validate-request";
+import { bot } from "../app";
 
 const router = express.Router();
 
@@ -73,6 +74,19 @@ router.post(
       status: "requested",
     });
     await joursey.save();
+
+    bot.telegram
+      .sendMessage(
+        process.env.CHAT_ID,
+        `${user.name} has purchased a Jersey.
+Jersey no: ${jourseyNumber}
+Jersey Name : ${jourseyName.toUpperCase()}
+Payment Method: ${paymentMethod}
+Transaction Id: ${txId}
+Size : ${size}
+Sleve Size ${sleveSize}`
+      )
+      .catch(console.error);
 
     res.json(joursey);
   }
