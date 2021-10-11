@@ -9,6 +9,13 @@ const JerseyDetails = () => {
   return (
     <div className="form-container bg-white rounded-xl mt-28 px-4 py-8 flex flex-col gap-4 shadow-lg">
       <div>
+        <h1 className="text-2xl font-semibold">Jersey Details</h1>
+      </div>
+      <div>
+        <b>Payment Status : </b>
+        <span>{jersey.status.toUpperCase()}</span>
+      </div>
+      <div>
         <b>Jersey Number : </b>
         <span>{jersey.jourseyNumber}</span>
       </div>

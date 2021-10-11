@@ -11,6 +11,7 @@ import Contact from "./screens/Contact";
 import UserContextProvider from "./contexts/userContext";
 import { Toaster } from "react-hot-toast";
 import JerseyContextProvider from "./contexts/jerseyContext";
+import Orders from "./screens/Orders";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/dashboard" component={Dashboard} exact />
+              <Route path="/orders" component={Orders} exact />
               <Route path="/contact" component={Contact} exact />
 
               <Route path="/sign-in" component={SignIn} exact />

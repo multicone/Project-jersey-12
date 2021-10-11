@@ -25,7 +25,7 @@ const UserContextProvider = (props) => {
           duration: 1500,
         });
       } catch (e) {
-        // console.log(e.response.data.errors)
+        console.log(e.response.data.errors);
         e.response.data?.errors.map((err) => {
           toast.error(err.message, {
             duration: 1500,
