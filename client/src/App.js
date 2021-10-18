@@ -25,13 +25,12 @@ const App = () => {
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/sign-in" component={SignIn} exact />
+              <Route path="/create-account" component={CreateAccount} exact />
               <Route path="/dashboard" component={Dashboard} exact />
               <OrderContextProvider>
                 <Route path="/orders" component={Orders} exact />
               </OrderContextProvider>
               <Route path="/contact" component={Contact} exact />
-
-              <Route path="/create-account" component={CreateAccount} exact />
             </Switch>
             <Footer />
           </Router>
