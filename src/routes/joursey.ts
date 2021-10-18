@@ -6,6 +6,7 @@ import { BadRequestError } from "../errors/bad-request-error";
 import { body } from "express-validator";
 import { validateRequest } from "../middlewares/validate-request";
 import { bot } from "../app";
+import { RequireAdmin } from "../middlewares/require-admin";
 
 const router = express.Router();
 
@@ -109,6 +110,92 @@ router.get(
       }
     } else {
       throw new BadRequestError("You are unauthorized");
+    }
+  }
+);
+
+router.get(
+  "/api/orders",
+  currentUser,
+  RequireAuth,
+  RequireAdmin,
+  async (req: Request, res: Response) => {
+    const user = req.user;
+    if (user) {
+      const joursey = await Joursey.find().populate("user");
+      if (joursey) {
+        res.json(joursey);
+      } else {
+        throw new BadRequestError("No jersey Found");
+      }
+    } else {
+      throw new BadRequestError("You are unauthorized");
+    }
+  }
+);
+
+router.post(
+  "/api/orders/confirm/:id",
+  currentUser,
+  RequireAuth,
+  RequireAdmin,
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    if (id) {
+      const filter = { _id: id };
+      const update = { status: "confirmed" };
+
+      try {
+        Joursey.findOneAndUpdate(
+          filter,
+          update,
+          {
+            new: true,
+          },
+          function (err) {
+            if (err) console.log(err);
+          }
+        );
+
+        res.json("Updated");
+      } catch (e) {
+        throw new BadRequestError("Jersey not found");
+      }
+    } else {
+      throw new BadRequestError("Invalid params");
+    }
+  }
+);
+
+router.post(
+  "/api/orders/reject/:id",
+  currentUser,
+  RequireAuth,
+  RequireAdmin,
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    if (id) {
+      const filter = { _id: id };
+      const update = { status: "rejected" };
+
+      try {
+        Joursey.findOneAndUpdate(
+          filter,
+          update,
+          {
+            new: true,
+          },
+          function (err) {
+            if (err) console.log(err);
+          }
+        );
+
+        res.json("Updated");
+      } catch (e) {
+        throw new BadRequestError("Jersey not found");
+      }
+    } else {
+      throw new BadRequestError("Invalid params");
     }
   }
 );

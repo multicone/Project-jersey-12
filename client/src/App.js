@@ -12,6 +12,7 @@ import UserContextProvider from "./contexts/userContext";
 import { Toaster } from "react-hot-toast";
 import JerseyContextProvider from "./contexts/jerseyContext";
 import Orders from "./screens/Orders";
+import OrderContextProvider from "./contexts/orderContext";
 
 const App = () => {
   return (
@@ -23,11 +24,13 @@ const App = () => {
             <Navbar />
             <Switch>
               <Route path="/" component={Home} exact />
+              <Route path="/sign-in" component={SignIn} exact />
               <Route path="/dashboard" component={Dashboard} exact />
-              <Route path="/orders" component={Orders} exact />
+              <OrderContextProvider>
+                <Route path="/orders" component={Orders} exact />
+              </OrderContextProvider>
               <Route path="/contact" component={Contact} exact />
 
-              <Route path="/sign-in" component={SignIn} exact />
               <Route path="/create-account" component={CreateAccount} exact />
             </Switch>
             <Footer />
