@@ -43,6 +43,7 @@ const jourseySchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       required: true,
       unique: true,
+      ref: "User",
     },
     jourseyNumber: {
       type: String,
